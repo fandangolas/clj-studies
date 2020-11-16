@@ -3,15 +3,17 @@
 ;Defining map fn using recursion
 
 (defn map* [f coll]
-  (if (empty? coll)
-    ()
-    (let [first (first coll)
-          rest  (rest coll)]
-      (cons (f first) (map* f rest)))))
+  (lazy-seq
+    (if (empty? coll)
+      ()
+      (let [first (first coll)
+            rest  (rest coll)]
+        (cons (f first) (map* f rest))))))
 
 (map* inc [])
 (map* inc [1])
 (map* inc (range 10))
+(map* inc (range))
 
 ;Defining a map fn with tail-recursion using loop + recur
 

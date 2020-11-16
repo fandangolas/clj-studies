@@ -3,19 +3,21 @@
 ;Creating filter fn using recursion
 
 (defn filter* [f? coll]
-  (if (empty? coll)
-   ()
-   (let [first (first coll)
-         rest  (rest coll)]
-     (if (f? first)
-       (cons first (filter* f? rest))
-       (filter* f? rest)))))
+  (lazy-seq
+    (if (empty? coll)
+       ()
+       (let [first (first coll)
+             rest  (rest coll)]
+         (if (f? first)
+           (cons first (filter* f? rest))
+           (filter* f? rest))))))
 
 (filter* identity [])
 (filter* even? [1])
 (filter* odd? [1])
 (filter* even? (range 10))
 (filter* odd? (range 10))
+(filter* even? (range))
 
 ; filter fn with tail-recursion using loop + recur
 
