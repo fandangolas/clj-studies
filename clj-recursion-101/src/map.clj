@@ -13,18 +13,18 @@
 (map* inc [1])
 (map* inc (range 10))
 
-;Defining a map fn with tail-recursion
+;Defining a map fn with tail-recursion using loop + recur
 
-(defn tail-recursive-map-helper [f coll acc]
-  (if (empty? coll)
-    acc
-    (let [first (first coll)
-          rest  (rest coll)
-          new-acc (conj acc (f first))]
-      (recur f rest new-acc))))
+(defn tail-recursive-map*
+  [f coll]
 
-(defn tail-recursive-map* [f coll]
-  (tail-recursive-map-helper f coll []))
+  (loop [coll coll acc []]
+    (if (empty? coll)
+      acc
+      (let [first (first coll)
+            rest  (rest coll)
+            new-acc (conj acc (f first))]
+        (recur rest new-acc)))))
 
 (tail-recursive-map* inc [])
 (tail-recursive-map* inc [1])
