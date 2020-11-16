@@ -17,19 +17,17 @@
 (filter* even? (range 10))
 (filter* odd? (range 10))
 
-; filter fn with tail-recursion
-
-(defn tail-recursive-filter-helper [f? coll acc]
-  (if (empty? coll)
-    acc
-    (let [first (first coll)
-          rest  (rest coll)]
-       (if (f? first)
-        (recur f? rest (conj acc first))
-        (recur f? rest acc)))))
+; filter fn with tail-recursion using loop + recur
 
 (defn tail-recursive-filter* [f? coll]
-  (tail-recursive-filter-helper f? coll []))
+  (loop [coll coll acc []]
+    (if (empty? coll)
+      acc
+      (let [first (first coll)
+            rest  (rest coll)]
+        (if (f? first)
+          (recur rest (conj acc first))
+          (recur rest acc))))))
 
 (tail-recursive-filter* identity [])
 (tail-recursive-filter* even? [1])
