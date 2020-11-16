@@ -16,15 +16,12 @@
 
 ;Defining length fn with tail-recursion
 
-(defn length-with-tail-recursion-helper
-  [coll acc]
-  (if (empty? coll)
-    acc
-    (let [rest  (rest coll)]
-      (recur rest (inc acc)))))
-
 (defn length-with-tail-recursion [coll]
-  (length-with-tail-recursion-helper coll 0))
+  (loop [coll coll acc 0]
+    (if (empty? coll)
+      acc
+      (let [rest (rest coll)]
+        (recur rest (inc acc))))))
 
 (length-with-tail-recursion [])
 (length-with-tail-recursion [1])
