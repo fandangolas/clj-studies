@@ -10,10 +10,11 @@
             rest  (rest coll)]
         (cons (f first) (map* f rest))))))
 
-(map* inc [])
-(map* inc [1])
-(map* inc (range 10))
-(map* inc (range))
+(comment
+  (map* inc [])
+  (map* inc [1])
+  (map* inc (range 10))
+  (map* inc (range)))
 
 ;Defining a map fn with tail-recursion using loop + recur
 
@@ -28,6 +29,7 @@
             new-acc (conj acc (f first))]
         (recur rest new-acc)))))
 
-(tail-recursive-map* inc [])
-(tail-recursive-map* inc [1])
-(tail-recursive-map* inc (range 10))
+(comment
+  (tail-recursive-map* inc [])
+  (tail-recursive-map* inc [1])
+  (tail-recursive-map* inc (range 10)))

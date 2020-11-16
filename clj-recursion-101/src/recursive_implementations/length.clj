@@ -10,9 +10,10 @@
       empty-result
       (inc (length* coll-minus-first)))))
 
-(length* [])
-(length* [1])
-(length* (range 10))
+(comment
+  (length* [])
+  (length* [1])
+  (length* (range 10)))
 
 ;Defining length fn with tail-recursion
 
@@ -23,6 +24,7 @@
       (let [rest (rest coll)]
         (recur rest (inc acc))))))
 
-(length-with-tail-recursion* [])
-(length-with-tail-recursion* [1])
-(length-with-tail-recursion* (range 10))
+(comment
+  (length-with-tail-recursion* [])
+  (length-with-tail-recursion* [1])
+  (length-with-tail-recursion* (range 10)))

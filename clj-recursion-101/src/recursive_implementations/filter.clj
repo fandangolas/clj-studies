@@ -12,12 +12,13 @@
            (cons first (filter* f? rest))
            (filter* f? rest))))))
 
-(filter* identity [])
-(filter* even? [1])
-(filter* odd? [1])
-(filter* even? (range 10))
-(filter* odd? (range 10))
-(filter* even? (range))
+(comment
+  (filter* identity [])
+  (filter* even? [1])
+  (filter* odd? [1])
+  (filter* even? (range 10))
+  (filter* odd? (range 10))
+  (filter* even? (range)))
 
 ; filter fn with tail-recursion using loop + recur
 
@@ -31,10 +32,11 @@
           (recur rest (conj acc first))
           (recur rest acc))))))
 
-(tail-recursive-filter* identity [])
-(tail-recursive-filter* even? [1])
-(tail-recursive-filter* odd? [1])
-(tail-recursive-filter* even? (range 10))
-(tail-recursive-filter* odd? (range 10))
+(comment
+  (tail-recursive-filter* identity [])
+  (tail-recursive-filter* even? [1])
+  (tail-recursive-filter* odd? [1])
+  (tail-recursive-filter* even? (range 10))
+  (tail-recursive-filter* odd? (range 10)))
 
 
