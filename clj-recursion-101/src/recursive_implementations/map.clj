@@ -1,4 +1,4 @@
-(ns map)
+(ns recursive-implementations.map)
 
 ;Defining map fn using recursion
 

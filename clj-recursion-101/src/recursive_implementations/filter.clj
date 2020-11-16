@@ -1,4 +1,4 @@
-(ns filter)
+(ns recursive-implementations.filter)
 
 ;Creating filter fn using recursion
 
